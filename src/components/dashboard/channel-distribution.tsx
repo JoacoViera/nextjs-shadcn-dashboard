@@ -30,6 +30,7 @@ export function ChannelDistribution() {
               outerRadius={80}
               fill="#8884d8"
               dataKey="count"
+              nameKey="channel"
             >
               {channelData.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
@@ -41,6 +42,8 @@ export function ChannelDistribution() {
                 border: "1px solid hsl(var(--border))",
                 borderRadius: "8px",
               }}
+              labelStyle={{ color: "white" }}
+              itemStyle={{ color: "white" }}
               formatter={(value?: number) => [value?.toLocaleString() || 0, "Leads"]}
             />
             <Legend
