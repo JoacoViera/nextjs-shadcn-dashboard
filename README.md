@@ -1,6 +1,7 @@
 # Next.js Dashboard with Sales Metrics
 
-A modern, full-featured dashboard application built with Next.js 14+, featuring authentication, sales metrics visualization, and dark mode by default.
+A modern, full-featured dashboard application built with Next.js 14+, featuring authentication,
+sales metrics visualization, and dark mode by default.
 
 ## Features
 
@@ -83,11 +84,13 @@ nextjs-shadcn-dashboard/
 ### Installation
 
 1. Install dependencies:
+
 ```bash
 pnpm install
 ```
 
 2. Run the development server:
+
 ```bash
 pnpm dev
 ```
@@ -116,6 +119,7 @@ Or create a new account via the signup page.
 ### Dashboard Features
 
 The dashboard displays:
+
 - 5 metric cards showing key business metrics with change percentages
 - A line chart comparing current year vs previous year revenue
 - A table of recent transactions with status indicators
@@ -123,6 +127,7 @@ The dashboard displays:
 ### Protected Routes
 
 The following routes are protected and require authentication:
+
 - `/dashboard` - Main dashboard with metrics
 - `/profile` - User profile settings
 
@@ -131,6 +136,7 @@ Attempting to access these without authentication redirects to `/login`.
 ### Public Routes
 
 The following routes are publicly accessible:
+
 - `/login` - Sign in page
 - `/signup` - Create new account
 - `/forgot-password` - Password recovery
@@ -165,6 +171,7 @@ pnpm lint         # Run ESLint
 ### Theme
 
 The application uses dark mode by default. The theme is configured in:
+
 - `app/globals.css` - CSS variables for colors
 - `tailwind.config.ts` - Tailwind theme configuration
 - `components/providers/theme-provider.tsx` - Theme provider setup
@@ -172,6 +179,7 @@ The application uses dark mode by default. The theme is configured in:
 ### Mock Data
 
 Mock data is located in the `mock/` directory:
+
 - `mock/users.ts` - Add or modify test users
 - `mock/metrics.ts` - Customize metrics and transaction data
 
@@ -186,17 +194,20 @@ Mock data is located in the `mock/` directory:
 ## Production Deployment
 
 1. Build the application:
+
 ```bash
 pnpm build
 ```
 
 2. Set environment variables:
+
 ```bash
 JWT_SECRET=your-secure-secret-key-here
 NODE_ENV=production
 ```
 
 3. Start the production server:
+
 ```bash
 pnpm start
 ```
@@ -224,16 +235,19 @@ pnpm start
 ## Troubleshooting
 
 ### Server won't start
+
 - Ensure port 3000 is available
 - Check Node.js version (18+)
 - Clear `.next` folder and rebuild
 
 ### Authentication issues
+
 - Clear browser cookies and local storage
 - Check JWT_SECRET is set correctly
 - Verify token hasn't expired (7 day expiry)
 
 ### Build errors
+
 - Run `pnpm install` to ensure all dependencies are installed
 - Delete `node_modules` and `.next` folders, then reinstall
 

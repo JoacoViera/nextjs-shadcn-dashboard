@@ -1,7 +1,16 @@
 "use client";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 import { RevenueDataPoint } from "@/types/metrics";
 
 interface RevenueChartProps {
@@ -13,9 +22,7 @@ export function RevenueChart({ data }: RevenueChartProps) {
     <Card className="col-span-full">
       <CardHeader>
         <CardTitle>Revenue Overview</CardTitle>
-        <CardDescription>
-          Monthly revenue comparison with previous year
-        </CardDescription>
+        <CardDescription>Monthly revenue comparison with previous year</CardDescription>
       </CardHeader>
       <CardContent>
         <ResponsiveContainer width="100%" height={350}>
@@ -37,7 +44,9 @@ export function RevenueChart({ data }: RevenueChartProps) {
                 border: "1px solid hsl(var(--border))",
                 borderRadius: "var(--radius)",
               }}
-              formatter={(value: number | undefined) => value ? [`$${value.toLocaleString()}`, ""] : ["$0", ""]}
+              formatter={(value: number | undefined) =>
+                value ? [`$${value.toLocaleString()}`, ""] : ["$0", ""]
+              }
             />
             <Legend />
             <Line

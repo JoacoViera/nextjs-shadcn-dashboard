@@ -5,7 +5,14 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 
 export function ForgotPasswordForm() {
@@ -34,9 +41,7 @@ export function ForgotPasswordForm() {
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle>Check your email</CardTitle>
-          <CardDescription>
-            We&apos;ve sent a password reset link to {email}
-          </CardDescription>
+          <CardDescription>We&apos;ve sent a password reset link to {email}</CardDescription>
         </CardHeader>
         <CardFooter>
           <Link href="/login" className="w-full">
@@ -51,9 +56,7 @@ export function ForgotPasswordForm() {
     <Card className="w-full max-w-md">
       <CardHeader>
         <CardTitle>Forgot password?</CardTitle>
-        <CardDescription>
-          Enter your email and we&apos;ll send you a reset link
-        </CardDescription>
+        <CardDescription>Enter your email and we&apos;ll send you a reset link</CardDescription>
       </CardHeader>
       <form onSubmit={handleSubmit}>
         <CardContent className="space-y-4">
@@ -76,7 +79,7 @@ export function ForgotPasswordForm() {
           </Button>
           <Link
             href="/login"
-            className="text-sm text-muted-foreground hover:text-primary text-center"
+            className="text-center text-sm text-muted-foreground hover:text-primary"
           >
             Back to sign in
           </Link>

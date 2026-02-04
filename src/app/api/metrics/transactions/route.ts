@@ -8,19 +8,13 @@ export async function GET(request: NextRequest) {
     const token = request.cookies.get("token")?.value;
 
     if (!token) {
-      return NextResponse.json(
-        { success: false, message: "Unauthorized" },
-        { status: 401 }
-      );
+      return NextResponse.json({ success: false, message: "Unauthorized" }, { status: 401 });
     }
 
     const payload = await verifyToken(token);
 
     if (!payload) {
-      return NextResponse.json(
-        { success: false, message: "Invalid token" },
-        { status: 401 }
-      );
+      return NextResponse.json({ success: false, message: "Invalid token" }, { status: 401 });
     }
 
     // Get query params
@@ -37,9 +31,6 @@ export async function GET(request: NextRequest) {
     });
   } catch (error) {
     console.error("Transactions error:", error);
-    return NextResponse.json(
-      { success: false, message: "Internal server error" },
-      { status: 500 }
-    );
+    return NextResponse.json({ success: false, message: "Internal server error" }, { status: 500 });
   }
 }

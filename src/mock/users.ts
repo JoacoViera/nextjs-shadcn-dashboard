@@ -49,11 +49,7 @@ export function findUserById(id: string): MockUser | undefined {
   return mockUsers.find((user) => user.id === id);
 }
 
-export function createUser(
-  email: string,
-  password: string,
-  name: string
-): MockUser {
+export function createUser(email: string, password: string, name: string): MockUser {
   const newUser: MockUser = {
     id: String(mockUsers.length + 1),
     email,
@@ -66,9 +62,6 @@ export function createUser(
   return newUser;
 }
 
-export function verifyPassword(
-  plainPassword: string,
-  hashedPassword: string
-): boolean {
+export function verifyPassword(plainPassword: string, hashedPassword: string): boolean {
   return bcrypt.compareSync(plainPassword, hashedPassword);
 }

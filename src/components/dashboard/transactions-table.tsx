@@ -53,19 +53,16 @@ export function TransactionsTable({ transactions }: TransactionsTableProps) {
                 <TableRow key={transaction.id}>
                   <TableCell className="font-medium">{transaction.id}</TableCell>
                   <TableCell>{transaction.customer}</TableCell>
-                  <TableCell className="text-muted-foreground">
-                    {transaction.email}
-                  </TableCell>
+                  <TableCell className="text-muted-foreground">{transaction.email}</TableCell>
                   <TableCell className="font-semibold">
-                    ${transaction.amount.toLocaleString("en-US", {
+                    $
+                    {transaction.amount.toLocaleString("en-US", {
                       minimumFractionDigits: 2,
                       maximumFractionDigits: 2,
                     })}
                   </TableCell>
                   <TableCell>
-                    <Badge variant={getStatusColor(transaction.status)}>
-                      {transaction.status}
-                    </Badge>
+                    <Badge variant={getStatusColor(transaction.status)}>{transaction.status}</Badge>
                   </TableCell>
                   <TableCell className="text-muted-foreground">
                     {format(new Date(transaction.date), "MMM dd, yyyy")}

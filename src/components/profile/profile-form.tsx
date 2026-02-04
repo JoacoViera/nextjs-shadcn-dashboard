@@ -37,9 +37,7 @@ export function ProfileForm() {
       <Card>
         <CardHeader>
           <CardTitle>Profile Information</CardTitle>
-          <CardDescription>
-            Update your personal information and contact details
-          </CardDescription>
+          <CardDescription>Update your personal information and contact details</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -113,9 +111,7 @@ export function ProfileForm() {
           <div className="flex justify-between">
             <span className="text-sm text-muted-foreground">Account Created</span>
             <span className="text-sm font-medium">
-              {user?.createdAt
-                ? new Date(user.createdAt).toLocaleDateString()
-                : "N/A"}
+              {user?.createdAt ? new Date(user.createdAt).toLocaleDateString() : "N/A"}
             </span>
           </div>
         </CardContent>

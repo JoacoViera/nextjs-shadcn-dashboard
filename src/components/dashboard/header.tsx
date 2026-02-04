@@ -50,12 +50,7 @@ export function Header({ onMenuClick }: HeaderProps) {
   return (
     <header className="flex h-16 items-center justify-between border-b bg-card px-6">
       <div className="flex items-center gap-4">
-        <Button
-          variant="ghost"
-          size="icon"
-          className="md:hidden"
-          onClick={onMenuClick}
-        >
+        <Button variant="ghost" size="icon" className="md:hidden" onClick={onMenuClick}>
           <Menu className="h-5 w-5" />
         </Button>
         <h2 className="text-lg font-semibold">Welcome back, {user?.name}</h2>
@@ -73,15 +68,11 @@ export function Header({ onMenuClick }: HeaderProps) {
           <DropdownMenuLabel>
             <div className="flex flex-col space-y-1">
               <p className="text-sm font-medium leading-none">{user?.name}</p>
-              <p className="text-xs leading-none text-muted-foreground">
-                {user?.email}
-              </p>
+              <p className="text-xs leading-none text-muted-foreground">{user?.email}</p>
             </div>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem onClick={() => router.push("/profile")}>
-            Profile
-          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => router.push("/profile")}>Profile</DropdownMenuItem>
           <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

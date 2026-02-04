@@ -11,7 +11,7 @@ export async function POST(request: NextRequest) {
     if (!email || !password || !name) {
       return NextResponse.json(
         { success: false, message: "Email, password, and name are required" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
     if (!emailRegex.test(email)) {
       return NextResponse.json(
         { success: false, message: "Invalid email format" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
     if (existingUser) {
       return NextResponse.json(
         { success: false, message: "User with this email already exists" },
-        { status: 409 }
+        { status: 409 },
       );
     }
 
@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
     if (password.length < 8) {
       return NextResponse.json(
         { success: false, message: "Password must be at least 8 characters" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -75,9 +75,6 @@ export async function POST(request: NextRequest) {
     return res;
   } catch (error) {
     console.error("Signup error:", error);
-    return NextResponse.json(
-      { success: false, message: "Internal server error" },
-      { status: 500 }
-    );
+    return NextResponse.json({ success: false, message: "Internal server error" }, { status: 500 });
   }
 }

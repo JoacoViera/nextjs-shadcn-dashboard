@@ -5,11 +5,7 @@ import { Sidebar } from "@/components/dashboard/sidebar";
 import { Header } from "@/components/dashboard/header";
 import { cn } from "@/lib/utils";
 
-export default function DashboardLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -24,6 +20,12 @@ export default function DashboardLayout({
         <div
           className="fixed inset-0 z-40 bg-background/80 backdrop-blur-sm md:hidden"
           onClick={() => setSidebarOpen(false)}
+          onKeyDown={(e) => {
+            if (e.key === "Escape") setSidebarOpen(false);
+          }}
+          role="button"
+          tabIndex={0}
+          aria-label="Close sidebar"
         />
       )}
 
@@ -31,7 +33,7 @@ export default function DashboardLayout({
       <aside
         className={cn(
           "fixed inset-y-0 left-0 z-50 w-64 transform transition-transform duration-300 ease-in-out md:hidden",
-          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+          sidebarOpen ? "translate-x-0" : "-translate-x-full",
         )}
       >
         <Sidebar />
@@ -40,9 +42,7 @@ export default function DashboardLayout({
       {/* Main content */}
       <div className="flex flex-1 flex-col overflow-hidden">
         <Header onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
-        <main className="flex-1 overflow-y-auto bg-muted/30 p-6">
-          {children}
-        </main>
+        <main className="flex-1 overflow-y-auto bg-muted/30 p-6">{children}</main>
       </div>
     </div>
   );

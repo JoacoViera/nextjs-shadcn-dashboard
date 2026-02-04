@@ -2,7 +2,7 @@ import { SignJWT, jwtVerify } from "jose";
 import { JWTPayload } from "@/types/auth";
 
 const secret = new TextEncoder().encode(
-  process.env.JWT_SECRET || "your-secret-key-change-this-in-production"
+  process.env.JWT_SECRET || "your-secret-key-change-this-in-production",
 );
 
 export async function signToken(payload: JWTPayload): Promise<string> {

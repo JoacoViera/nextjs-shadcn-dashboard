@@ -62,7 +62,7 @@ export function Sidebar() {
                   "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                   isActive
                     ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                    : "text-muted-foreground hover:bg-muted hover:text-foreground",
                 )}
               >
                 <item.icon className="h-4 w-4" />
@@ -73,11 +73,7 @@ export function Sidebar() {
         })}
       </nav>
       <div className="border-t p-4">
-        <Button
-          variant="ghost"
-          className="w-full justify-start gap-3"
-          onClick={handleLogout}
-        >
+        <Button variant="ghost" className="w-full justify-start gap-3" onClick={handleLogout}>
           <LogOut className="h-4 w-4" />
           Logout
         </Button>

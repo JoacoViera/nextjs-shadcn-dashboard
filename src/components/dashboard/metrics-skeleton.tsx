@@ -12,7 +12,7 @@ export function MetricsSkeleton() {
               <Skeleton className="h-4 w-4" />
             </CardHeader>
             <CardContent>
-              <Skeleton className="h-8 w-32 mb-2" />
+              <Skeleton className="mb-2 h-8 w-32" />
               <Skeleton className="h-4 w-24" />
             </CardContent>
           </Card>
@@ -21,7 +21,7 @@ export function MetricsSkeleton() {
 
       <Card>
         <CardHeader>
-          <Skeleton className="h-6 w-48 mb-2" />
+          <Skeleton className="mb-2 h-6 w-48" />
           <Skeleton className="h-4 w-64" />
         </CardHeader>
         <CardContent>
@@ -31,7 +31,7 @@ export function MetricsSkeleton() {
 
       <Card>
         <CardHeader>
-          <Skeleton className="h-6 w-48 mb-2" />
+          <Skeleton className="mb-2 h-6 w-48" />
           <Skeleton className="h-4 w-64" />
         </CardHeader>
         <CardContent>

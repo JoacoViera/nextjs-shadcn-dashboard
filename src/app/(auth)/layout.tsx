@@ -1,10 +1,6 @@
-export default function AuthLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-background to-muted">
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-background to-muted p-4">
       {children}
     </div>
   );

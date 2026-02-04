@@ -10,13 +10,7 @@ interface MetricCardProps {
   icon: LucideIcon;
 }
 
-export function MetricCard({
-  title,
-  value,
-  change,
-  changeType,
-  icon: Icon,
-}: MetricCardProps) {
+export function MetricCard({ title, value, change, changeType, icon: Icon }: MetricCardProps) {
   const isPositive = changeType === "increase" && change > 0;
   const isNegative = changeType === "increase" && change < 0;
 
@@ -28,7 +22,7 @@ export function MetricCard({
       </CardHeader>
       <CardContent>
         <div className="text-2xl font-bold">{value}</div>
-        <div className="flex items-center text-xs text-muted-foreground mt-1">
+        <div className="mt-1 flex items-center text-xs text-muted-foreground">
           {change !== 0 && (
             <>
               {change > 0 ? (
@@ -36,7 +30,7 @@ export function MetricCard({
                   className={cn(
                     "mr-1 h-4 w-4",
                     isPositive && "text-green-500",
-                    isNegative && "text-red-500"
+                    isNegative && "text-red-500",
                   )}
                 />
               ) : (
@@ -44,16 +38,11 @@ export function MetricCard({
                   className={cn(
                     "mr-1 h-4 w-4",
                     !isPositive && change < 0 && "text-red-500",
-                    isNegative && "text-green-500"
+                    isNegative && "text-green-500",
                   )}
                 />
               )}
-              <span
-                className={cn(
-                  isPositive && "text-green-500",
-                  isNegative && "text-red-500"
-                )}
-              >
+              <span className={cn(isPositive && "text-green-500", isNegative && "text-red-500")}>
                 {Math.abs(change)}%
               </span>
             </>
