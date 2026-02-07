@@ -1,10 +1,13 @@
 "use client";
 
-import { KPICards, LeadRevenueChart } from "@/components/dashboard/crm-kpi-cards";
-import { SalesFunnel } from "@/components/dashboard/sales-funnel";
-import { SalesRepPerformance } from "@/components/dashboard/sales-rep-performance";
-import { ChannelDistribution } from "@/components/dashboard/channel-distribution";
+import { KPICards } from "@/components/dashboard/crm-kpi-cards";
 import { LeadsTable } from "@/components/dashboard/leads-table";
+import {
+  DynamicLeadRevenueChart,
+  DynamicSalesFunnel,
+  DynamicSalesRepPerformance,
+  DynamicChannelDistribution,
+} from "@/components/dashboard/dynamic-charts";
 
 export default function DashboardPage() {
   return (
@@ -19,10 +22,10 @@ export default function DashboardPage() {
       <KPICards />
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <LeadRevenueChart />
-        <SalesFunnel />
-        <SalesRepPerformance />
-        <ChannelDistribution />
+        <DynamicLeadRevenueChart />
+        <DynamicSalesFunnel />
+        <DynamicSalesRepPerformance />
+        <DynamicChannelDistribution />
       </div>
 
       <LeadsTable />

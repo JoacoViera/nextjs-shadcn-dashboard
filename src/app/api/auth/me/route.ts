@@ -10,7 +10,10 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ success: false, message: "No token provided" }, { status: 401 });
     }
 
-    const payload = await verifyToken(token);
+    // Start token verification immediately
+    const payloadPromise = verifyToken(token);
+
+    const payload = await payloadPromise;
 
     if (!payload) {
       return NextResponse.json({ success: false, message: "Invalid token" }, { status: 401 });

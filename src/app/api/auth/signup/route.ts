@@ -3,6 +3,9 @@ import { findUserByEmail, createUser } from "@/mock/users";
 import { signToken } from "@/lib/auth";
 import { SignupRequest, AuthResponse } from "@/types/auth";
 
+// Hoisted regex for email validation - avoids recreation on every request
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export async function POST(request: NextRequest) {
   try {
     const body: SignupRequest = await request.json();
@@ -16,10 +19,17 @@ export async function POST(request: NextRequest) {
     }
 
     // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!EMAIL_REGEX.test(email)) {
       return NextResponse.json(
         { success: false, message: "Invalid email format" },
+        { status: 400 },
+      );
+    }
+
+    // Validate password strength before DB lookup
+    if (password.length < 8) {
+      return NextResponse.json(
+        { success: false, message: "Password must be at least 8 characters" },
         { status: 400 },
       );
     }
@@ -30,14 +40,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { success: false, message: "User with this email already exists" },
         { status: 409 },
-      );
-    }
-
-    // Validate password strength
-    if (password.length < 8) {
-      return NextResponse.json(
-        { success: false, message: "Password must be at least 8 characters" },
-        { status: 400 },
       );
     }
 

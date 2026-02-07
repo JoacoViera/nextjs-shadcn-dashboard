@@ -2,6 +2,8 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { User } from "@/types/user";
 
+const STORAGE_KEY = `auth-storage`;
+
 interface AuthState {
   user: User | null;
   token: string | null;
@@ -21,16 +23,24 @@ export const useAuthStore = create<AuthState>()(
       setUser: (user) => set({ user, isAuthenticated: !!user }),
       setToken: (token) => set({ token }),
       login: (user, token) => {
-        localStorage.setItem("token", token);
+        try {
+          localStorage.setItem("token", token);
+        } catch (e) {
+          console.warn("Failed to save token to localStorage:", e);
+        }
         set({ user, token, isAuthenticated: true });
       },
       logout: () => {
-        localStorage.removeItem("token");
+        try {
+          localStorage.removeItem("token");
+        } catch (e) {
+          console.warn("Failed to remove token from localStorage:", e);
+        }
         set({ user: null, token: null, isAuthenticated: false });
       },
     }),
     {
-      name: "auth-storage",
+      name: STORAGE_KEY,
       partialize: (state) => ({
         user: state.user,
         token: state.token,

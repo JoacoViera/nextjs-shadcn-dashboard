@@ -3,6 +3,9 @@ import { findUserByEmail, verifyPassword } from "@/mock/users";
 import { signToken } from "@/lib/auth";
 import { LoginRequest, AuthResponse } from "@/types/auth";
 
+// Hoisted regex for email validation
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export async function POST(request: NextRequest) {
   try {
     const body: LoginRequest = await request.json();
@@ -11,6 +14,14 @@ export async function POST(request: NextRequest) {
     if (!email || !password) {
       return NextResponse.json(
         { success: false, message: "Email and password are required" },
+        { status: 400 },
+      );
+    }
+
+    // Validate email format
+    if (!EMAIL_REGEX.test(email)) {
+      return NextResponse.json(
+        { success: false, message: "Invalid email format" },
         { status: 400 },
       );
     }
